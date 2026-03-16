@@ -5,6 +5,10 @@ export {
 export { Badge, badgeVariants } from "@/components/ui/badge";
 export { Button, buttonVariants } from "@/components/ui/button";
 export {
+  CodeBlockHeader,
+  codeBlockHeaderVariants,
+} from "@/components/ui/code-block-header";
+export {
   CODE_SNIPPET_MAX_LENGTH,
   CodeEditor,
   codeEditorVariants,

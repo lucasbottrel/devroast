@@ -4,6 +4,7 @@ import {
   Badge,
   Button,
   CodeBlock,
+  CodeBlockHeader,
   DiffLine,
   LeaderboardRow,
   ScoreRing,
@@ -139,11 +140,14 @@ export default async function UiComponentsPage() {
             <SectionTitle.Slash />
             <SectionTitle.Text>code_block</SectionTitle.Text>
           </SectionTitle.Root>
-          <CodeBlock
-            code={codeSample}
-            fileName="calculate.js"
-            lang="javascript"
-          />
+          <div className="overflow-hidden border border-border bg-input">
+            <CodeBlockHeader fileName="calculate.js" />
+            <CodeBlock
+              className="border-0"
+              code={codeSample}
+              lang="javascript"
+            />
+          </div>
         </section>
 
         <section className="space-y-4">

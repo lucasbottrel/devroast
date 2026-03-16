@@ -13,7 +13,12 @@ export function AppNavbar() {
           </span>
         </Link>
 
-        <span className="font-mono text-[13px] text-fg-muted">leaderboard</span>
+        <Link
+          href="/leaderboard"
+          className="font-mono text-[13px] text-fg-muted transition-colors hover:text-fg"
+        >
+          leaderboard
+        </Link>
       </div>
     </header>
   );
