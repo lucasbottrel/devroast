@@ -4,7 +4,7 @@ import { type BundledLanguage, codeToHtml } from "shiki";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const codeBlockVariants = tv({
-  base: "w-full overflow-hidden border border-border bg-input [&_.line]:block [&_.shiki]:m-0 [&_.shiki]:overflow-x-auto [&_.shiki]:bg-transparent [&_.shiki]:font-mono [&_.shiki]:text-[13px]",
+  base: "w-full overflow-hidden border border-border bg-input [&_.line]:block [&_.line]:whitespace-pre [&_.shiki]:m-0 [&_.shiki]:overflow-x-auto [&_.shiki]:bg-transparent [&_.shiki]:font-mono [&_.shiki]:text-[13px] [&_.shiki]:whitespace-normal",
   variants: {
     size: {
       md: "max-w-[560px]",
