@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   Button,
-  CodeInput,
+  CodeEditor,
   LeaderboardRow,
   SectionTitle,
   Toggle,
@@ -29,18 +29,14 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-[780px]">
-          <CodeInput.Root size="full" className="max-w-none">
-            <CodeInput.Header />
-            <CodeInput.Body>
-              <CodeInput.Gutter lineCount={15} />
-              <CodeInput.Textarea
-                aria-label="Code input"
-                value={code}
-                onChange={(event) => setCode(event.target.value)}
-                placeholder="// paste your code here"
-              />
-            </CodeInput.Body>
-          </CodeInput.Root>
+          <CodeEditor
+            size="full"
+            className="max-w-none"
+            value={code}
+            onChange={setCode}
+            textareaLabel="Code input"
+            placeholder="// paste your code here"
+          />
         </section>
 
         <section className="mx-auto flex w-full max-w-[780px] items-center justify-between gap-4">

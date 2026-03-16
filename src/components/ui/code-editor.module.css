@@ -1,0 +1,149 @@
+.body {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  height: 332px;
+  min-height: 332px;
+}
+
+.gutter {
+  overflow: hidden;
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.gutterContent {
+  padding: 16px 12px;
+}
+
+.lineNumber {
+  display: block;
+  height: 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 20px;
+  text-align: right;
+  color: var(--color-fg-subtle);
+}
+
+.editor {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.textarea,
+.highlight,
+.placeholder {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  padding: 16px;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 20px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  tab-size: 2;
+}
+
+.textarea {
+  z-index: 2;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--color-fg);
+  resize: none;
+  outline: none;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight,
+.placeholder {
+  z-index: 1;
+  pointer-events: none;
+  color: var(--color-fg);
+}
+
+.placeholder {
+  color: var(--color-fg-subtle);
+}
+
+.highlight pre,
+.highlight code,
+.highlight .shiki {
+  margin: 0;
+  min-height: 100%;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.highlight code {
+  display: block;
+}
+
+.select {
+  min-width: 136px;
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-fg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1;
+  padding: 8px 34px 8px 12px;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.select:focus {
+  border-color: var(--color-border-focus);
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--color-fg-subtle);
+  transform: translateY(-30%);
+  pointer-events: none;
+}
+
+.status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  color: var(--color-fg-subtle);
+}
+
+@media (max-width: 640px) {
+  .body {
+    grid-template-columns: 40px minmax(0, 1fr);
+    height: 288px;
+    min-height: 288px;
+  }
+
+  .gutterContent,
+  .textarea,
+  .highlight,
+  .placeholder {
+    padding: 14px 12px;
+  }
+
+  .select {
+    min-width: 118px;
+    max-width: 132px;
+  }
+}

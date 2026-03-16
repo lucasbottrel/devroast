@@ -4,6 +4,7 @@ export {
 } from "@/components/ui/analysis-card";
 export { Badge, badgeVariants } from "@/components/ui/badge";
 export { Button, buttonVariants } from "@/components/ui/button";
+export { CodeEditor, codeEditorVariants } from "@/components/ui/code-editor";
 export { CodeInput, codeInputVariants } from "@/components/ui/code-input";
 export { DiffLine, diffLineVariants } from "@/components/ui/diff-line";
 export {
