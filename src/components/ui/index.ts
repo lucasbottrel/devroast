@@ -15,6 +15,7 @@ export {
 } from "@/components/ui/code-editor";
 export { CodeInput, codeInputVariants } from "@/components/ui/code-input";
 export { DiffLine, diffLineVariants } from "@/components/ui/diff-line";
+export { HomeMetrics } from "@/components/ui/home-metrics";
 export {
   LeaderboardRow,
   leaderboardRowVariants,

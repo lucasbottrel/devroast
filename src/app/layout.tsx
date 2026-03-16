@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AppNavbar } from "@/components/app-navbar";
+import { AppTRPCProvider } from "@/trpc/client";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,10 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="min-h-screen bg-page text-fg">
-          <AppNavbar />
-          {children}
-        </div>
+        <AppTRPCProvider>
+          <div className="min-h-screen bg-page text-fg">
+            <AppNavbar />
+            {children}
+          </div>
+        </AppTRPCProvider>
       </body>
     </html>
   );

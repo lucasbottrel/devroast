@@ -1,6 +1,8 @@
 import { and, asc, desc, eq, sql } from "drizzle-orm";
 import { db } from "../client";
-import { roastDiffLines, roastFindings, roasts } from "../schema";
+import { roastDiffLines } from "../schema/roast-diff-lines";
+import { roastFindings } from "../schema/roast-findings";
+import { roasts } from "../schema/roasts";
 
 export async function getHomeStats() {
   const [stats] = await db
@@ -13,7 +15,8 @@ export async function getHomeStats() {
 
   return {
     totalCompletedRoasts: stats?.totalCompletedRoasts ?? 0,
-    averageScore: stats?.averageScore,
+    averageScore:
+      stats?.averageScore == null ? null : Number(stats.averageScore),
   };
 }
 

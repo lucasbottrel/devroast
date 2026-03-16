@@ -54,12 +54,8 @@
           "name": "roast_diff_lines_roast_id_roasts_id_fk",
           "tableFrom": "roast_diff_lines",
           "tableTo": "roasts",
-          "columnsFrom": [
-            "roast_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["roast_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -69,10 +65,7 @@
         "roast_diff_lines_roast_id_position_unique": {
           "name": "roast_diff_lines_roast_id_position_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "roast_id",
-            "position"
-          ]
+          "columns": ["roast_id", "position"]
         }
       },
       "policies": {},
@@ -135,12 +128,8 @@
           "name": "roast_findings_roast_id_roasts_id_fk",
           "tableFrom": "roast_findings",
           "tableTo": "roasts",
-          "columnsFrom": [
-            "roast_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["roast_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -150,10 +139,7 @@
         "roast_findings_roast_id_position_unique": {
           "name": "roast_findings_roast_id_position_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "roast_id",
-            "position"
-          ]
+          "columns": ["roast_id", "position"]
         }
       },
       "policies": {},
@@ -291,28 +277,17 @@
     "public.diff_line_kind": {
       "name": "diff_line_kind",
       "schema": "public",
-      "values": [
-        "context",
-        "added",
-        "removed"
-      ]
+      "values": ["context", "added", "removed"]
     },
     "public.finding_severity": {
       "name": "finding_severity",
       "schema": "public",
-      "values": [
-        "good",
-        "warning",
-        "critical"
-      ]
+      "values": ["good", "warning", "critical"]
     },
     "public.language_source": {
       "name": "language_source",
       "schema": "public",
-      "values": [
-        "auto",
-        "manual"
-      ]
+      "values": ["auto", "manual"]
     },
     "public.roast_language": {
       "name": "roast_language",
@@ -332,21 +307,12 @@
     "public.roast_status": {
       "name": "roast_status",
       "schema": "public",
-      "values": [
-        "pending",
-        "processing",
-        "completed",
-        "failed"
-      ]
+      "values": ["pending", "processing", "completed", "failed"]
     },
     "public.score_tone": {
       "name": "score_tone",
       "schema": "public",
-      "values": [
-        "good",
-        "warning",
-        "critical"
-      ]
+      "values": ["good", "warning", "critical"]
     }
   },
   "schemas": {},
