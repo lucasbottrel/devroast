@@ -165,6 +165,7 @@ const DETECTION_DEBOUNCE_MS = 100;
 const DETECTION_SUBSET = LANGUAGE_OPTIONS.flatMap(
   (language) => language.detect,
 );
+export const CODE_SNIPPET_MAX_LENGTH = 2000;
 
 let highlighterPromise: ReturnType<typeof createHighlighter> | null = null;
 
@@ -383,6 +384,7 @@ export interface CodeEditorProps
   placeholder?: string;
   className?: string;
   textareaLabel?: string;
+  maxLength?: number;
 }
 
 export function CodeEditor({
@@ -392,6 +394,7 @@ export function CodeEditor({
   className,
   size,
   textareaLabel = "Code editor",
+  maxLength = CODE_SNIPPET_MAX_LENGTH,
 }: CodeEditorProps) {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const gutterRef = useRef<HTMLDivElement | null>(null);
@@ -411,6 +414,11 @@ export function CodeEditor({
     languageMode === "manual" ? manualLanguage : detectedLanguage;
   const resolvedLabel =
     LANGUAGE_MAP.get(resolvedLanguage)?.label ?? "Plaintext";
+  const currentLength = value.length;
+  const isOverLimit = currentLength > maxLength;
+  const helperMessage = isOverLimit
+    ? `Snippet muito grande. Reduza para no maximo ${maxLength.toLocaleString("pt-BR")} caracteres para enviar.`
+    : null;
 
   const lineCount = useMemo(() => {
     if (!value) {
@@ -648,7 +656,28 @@ export function CodeEditor({
             autoCorrect="off"
             autoComplete="off"
             aria-label={textareaLabel}
+            aria-invalid={isOverLimit}
+            aria-describedby={
+              helperMessage ? "code-editor-limit-error" : undefined
+            }
           />
+        </div>
+      </div>
+
+      <div className={styles.footer}>
+        <div
+          id={helperMessage ? "code-editor-limit-error" : undefined}
+          className={styles.error}
+          role={helperMessage ? "alert" : undefined}
+        >
+          {helperMessage}
+        </div>
+        <div
+          className={styles.counter}
+          data-over-limit={isOverLimit || undefined}
+        >
+          {currentLength.toLocaleString("pt-BR")} /{" "}
+          {maxLength.toLocaleString("pt-BR")} caracteres
         </div>
       </div>
     </section>

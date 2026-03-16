@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   Button,
+  CODE_SNIPPET_MAX_LENGTH,
   CodeEditor,
   LeaderboardRow,
   SectionTitle,
@@ -12,7 +13,11 @@ import {
 
 export default function Home() {
   const [code, setCode] = useState("");
-  const isSubmitDisabled = useMemo(() => code.trim().length === 0, [code]);
+  const isOverCodeLimit = code.length > CODE_SNIPPET_MAX_LENGTH;
+  const isSubmitDisabled = useMemo(
+    () => code.trim().length === 0 || isOverCodeLimit,
+    [code, isOverCodeLimit],
+  );
 
   return (
     <main className="bg-page font-sans text-fg">
@@ -36,6 +41,7 @@ export default function Home() {
             onChange={setCode}
             textareaLabel="Code input"
             placeholder="// paste your code here"
+            maxLength={CODE_SNIPPET_MAX_LENGTH}
           />
         </section>
 
