@@ -24,8 +24,10 @@ export async function getLeaderboardPreview(limit = 3) {
   return db
     .select({
       id: roasts.id,
+      sourceCode: roasts.sourceCode,
       snippetPreview: roasts.snippetPreview,
       language: roasts.language,
+      lineCount: roasts.lineCount,
       score: roasts.score,
       scoreTone: roasts.scoreTone,
       createdAt: roasts.createdAt,
