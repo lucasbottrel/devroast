@@ -17,7 +17,10 @@ function useAnimatedMetric(value: number) {
 
 export function HomeMetrics() {
   const trpc = useTRPC();
-  const { data } = useQuery(trpc.metrics.home.queryOptions());
+  const { data } = useQuery({
+    ...trpc.metrics.home.queryOptions(),
+    staleTime: 60 * 60 * 1000,
+  });
   const totalCompletedRoasts = useAnimatedMetric(
     data?.totalCompletedRoasts ?? 0,
   );

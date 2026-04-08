@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export interface HomeLeaderboardCollapsibleProps {
+export interface LeaderboardCollapsibleProps {
   children: React.ReactNode;
   language: string;
   lineCount: number;
@@ -19,14 +19,18 @@ function ChevronIcon(props: React.ComponentProps<"svg">) {
   );
 }
 
-export function HomeLeaderboardCollapsible({
+function formatLineCount(lineCount: number) {
+  return `${lineCount} ${lineCount === 1 ? "line" : "lines"}`;
+}
+
+export function LeaderboardCollapsible({
   children,
   language,
   lineCount,
   rank,
   score,
   scoreTone,
-}: HomeLeaderboardCollapsibleProps) {
+}: LeaderboardCollapsibleProps) {
   const [open, setOpen] = useState(false);
   const canExpand = lineCount > 3;
 
@@ -41,22 +45,24 @@ export function HomeLeaderboardCollapsible({
 
   return (
     <article className="overflow-hidden border border-border bg-page">
-      <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-4 font-mono text-xs">
-        <div className="flex items-center gap-5">
-          <div className="flex items-center gap-1.5">
+      <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-4 font-mono text-xs sm:px-6">
+        <div className="flex items-center gap-4 sm:gap-6">
+          <div className="flex items-center gap-1.5 text-[13px]">
             <span className="text-fg-subtle">#</span>
             <span className="font-bold text-accent-amber">{rank}</span>
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-fg-subtle">score:</span>
-            <span className={`font-bold ${scoreToneClass}`}>{score}</span>
+            <span className="text-fg-subtle">score</span>
+            <span className={`text-[13px] font-bold ${scoreToneClass}`}>
+              {score}
+            </span>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 text-fg-subtle">
-          <span>{language}</span>
-          <span>{`${lineCount} lines`}</span>
+        <div className="flex items-center gap-3 text-right text-fg-subtle sm:gap-4">
+          <span className="text-fg-muted">{language}</span>
+          <span>{formatLineCount(lineCount)}</span>
         </div>
       </div>
 
